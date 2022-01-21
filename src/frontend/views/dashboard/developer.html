@@ -1,0 +1,143 @@
+<%- include("components/head.html") -%>
+
+    <div class="pt-8"></div>
+    <div class="row">
+        <div class="col-xl-4 order-xl-2">
+            <div class="card card-profile">
+                <div class="card-body pt-0">
+
+                    <div class="text-center">
+                        <div class="pt-4">
+                            <h2>API AUTH</h2>
+                        </div>
+                        <div class="mt-4" id="token-input">
+                            <span class="pb-2">SECRET API KEY </span>
+                            <div class="pb-3"></div>
+                            <div class="row">
+                                <div class="col-xl-10 col-lg-10 col-sm-10">
+                                    <input class="input-token-api password-input-token" type="password" disabled
+                                        value="<%= user.token %>" />
+                                    <p class="copyElements-0 copyInputHidden">
+                                        <%= user.token %>
+                                    </p>
+                                </div>
+                                <div class="col-xl-2 col-lg-2 col-sm-2">
+                                    <a href="#token-input" class="outStatusToken pt-2"
+                                        onclick="showPassword('password-input-token','outStatusToken')"><i
+                                            class="fas fa-eye pt-2 text-center pr-4"></i></a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-6 col-sm-6">
+                                    <button onclick="copyElements(0)" type="button" class="btn btn-success"
+                                        data-container="body" data-toggle="popover" data-color="success"
+                                        data-placement="top" data-content="La API KEY ha sido copiada.">
+                                        Copiar token
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <form action="/admin/api/update/pass" method="POST">
+                                <span class="pb-2">SECRET PASSWORD - BY DEFAULT THE LOGIN</span>
+                                <div class="pb-3"></div>
+                                <div class="row">
+                                    <div class="col-xl-10 col-lg-10 col-sm-10">
+                                        <input name="password"
+                                            class="input-token-api password-input-pass copyElements-0"
+                                            type="password" />
+                                    </div>
+                                    <div id="password-input" class="col-xl-2 col-lg-2 col-sm-2">
+                                        <a href="#password-input" class="outStatusPass pt-2"
+                                            onclick="showPassword('password-input-pass','outStatusPass')"><i
+                                                class="fas fa-eye pt-2 text-center pr-4"></i></a>
+                                    </div>
+                                </div>
+                                <div class="row pt-3 ">
+                                    <div class="col-xl-12 col-lg-12 col-sm-12">
+                                        <button type="submit" class="btn btn-success" data-container="body"
+                                            data-toggle="popover" data-color="success" data-placement="top"
+                                            data-content="Actualizando contraseña.">
+                                            Cambiar contraseña
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-8 order-xl-1">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <h3 class="mb-0">Documentación de la API REST</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h6 class="mb-4 doc-text">
+                        A la hora de solicitar estos datos, necesitarás la <span class="green-docs">&lt;key&gt;</span> y
+                        la <span class="green-docs">&lt;password&gt;</span> y estos son proporcionados justo a la
+                        derecha de esta documentación. Hay ciertas variables como el <span
+                            class="black-docs">&lt;host&gt;</span> y es el dominio o IP del sitio donde se ejecute esta
+                        app, en este caso <span class="black-docs"></span>. Por último en los endpoint hay ciertas
+                        palabras en <span class="yellow-docs">amarillo</span> que representan la extracción y como
+                        enviar los datos por los parámetros de
+                        una URL con los diferentes métodos de envio (get, post, delete and update). Puede probar estos
+                        endpoints con un cliente como <a href="https://www.postman.com/">postman</a> o <a
+                            href="https://insomnia.rest/">insomnia</a>.
+                    </h6>
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+                        <span class="alert-text"><strong>Info!</strong> las variables con : al frente significan valores
+                            dinámicos.</span>
+                    </div>
+                    <div class="row col-xl-12 pl-5 table-developers">
+                        <div class="col-xl-6 col-lg-4 col-sm-4 title-table">
+                            <code><i><span class="black-docs">&lt;host&gt;</span>/api/<span class="green-docs">&lt;key&gt;:&lt;password&gt;</span>/task/<span class="yellow-docs">all</span></i></code>
+                        </div>
+                        <div class="col-xl-6 col-lg-8 col-sm-8  content-table">
+                            <span class="default-docs"> Traerá todos los registros relacionadas a tu usuario, si no trae
+                                registros, puedes crear en el dashboard. Su método es <span
+                                    class="yellow-docs">GET</span>.</span>
+                        </div>
+                        <div class="col-xl-6 col-lg-4 col-sm-4 title-table">
+                            <code><i><span class="black-docs">&lt;host&gt;</span>/api/<span class="green-docs">&lt;key&gt;:&lt;password&gt;</span>/task/search/<span class="yellow-docs">:id</span></i></code>
+                        </div>
+                        <div class="col-xl-6 col-lg-8 col-sm-8  content-table">
+                            <span class="default-docs"> Traerá solo 1 registro con un ID en específico relacionado con
+                                tus credenciales. Su método es <span class="yellow-docs">GET</span>.</span>
+                        </div>
+                        <div class="col-xl-6 col-lg-4 col-sm-4 title-table">
+                            <code><i><span class="black-docs">&lt;host&gt;</span>/api/<span class="green-docs">&lt;key&gt;:&lt;password&gt;</span>/task/<br><span class="yellow-docs">add</span>/<span class="yellow-docs">:title</span>/<span class="yellow-docs">:description</span>/<span class="yellow-docs">:status</span></i></code>
+                        </div>
+                        <div class="col-xl-6 col-lg-8 col-sm-8  content-table">
+                            <span class="default-docs">Envía información para agregar un nuevo registro. Su método es
+                                <span class="yellow-docs"> POST</span>.</span>
+                        </div>
+                        <div class="col-xl-6 col-lg-4 col-sm-4 title-table">
+                            <code><i><span class="black-docs">&lt;host&gt;</span>/api/<span class="green-docs">&lt;key&gt;:&lt;password&gt;</span>/task/<span class="yellow-docs">delete</span>/<span class="yellow-docs">:id</i></code>
+                        </div>
+                        <div class="col-xl-6 col-lg-8 col-sm-8  content-table">
+                            <span class="default-docs">Elimina un registro en específico con el ID enviado por los
+                                parámetros de la URL. Su método es <span class="yellow-docs"> DELETE</span>.</span>
+                        </div>
+                        <div class="col-xl-6 col-lg-4 col-sm-4 title-table">
+                            <code><i><span class="black-docs">&lt;host&gt;</span>/api/<span class="green-docs">&lt;key&gt;:&lt;password&gt;</span>/task/<br><span class="yellow-docs">update</span>/<span class="yellow-docs">:id/:title</span>/<span class="yellow-docs">:description</span>/<span class="yellow-docs">:status</span></i></code>
+                        </div>
+                        <div class="col-xl-6 col-lg-8 col-sm-8  content-table">
+                            <span class="default-docs">Envía información para actualizar un registro. Su método es <span
+                                    class="yellow-docs"> PUT</span>.</span>
+                        </div>
+                    </div>
+                    <hr class="my-4" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include("components/footer.html") -%>

@@ -1,0 +1,33 @@
+<%- include('components/head.html') -%>
+
+    <div class="row">
+        <div class="col-xl-8 center-item pb-6 pt-8">
+            <form action="/admin/task/update/<%= task.map(task => `${task._id}`)%>"" class="bg-primary p-4 rounded" method="POST">
+                <div class="form-group">
+                    <label class="text-white" for="exampleFormControlInput1">Titulo de la
+                        tarea</label>
+                    <input required value="<%= task.map(task => `${task.title}`)%>" type="text" class="form-control" id="exampleFormControlInput1" name="title"
+                        placeholder="Titulo...">
+                </div>
+                <div class="form-group">
+                    <label class="text-white" for="exampleFormControlTextarea1">Descripcion de
+                        la tarea</label>
+                    <textarea required class="form-control" name="description" id="exampleFormControlTextarea1"
+                        placeholder="Descripcion..." rows="10"><%= task.map(task => `${task.description}`) %></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="text-white" for="exampleFormControlTextarea1">Estado de la tarea</label>
+                    <select required name="status" class="form-control" id="exampleFormControlSelect1">
+                        <option disabled selected hidden>Selecciona el estado de la tarea...</option>
+                        <option value="pending">Pendiente</option>
+                        <option value="process">En proceso</option>
+                        <option value="ending">Finalizando</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-default" type="submit" value="Enviar">
+                </div>
+            </form>
+        </div>
+    </div>
+    <%- include('components/footer.html') -%>
