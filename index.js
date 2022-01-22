@@ -33,10 +33,7 @@ server.use(
 		secret: process.env.APP_SECRET_COOKIE_NAME,
 		resave: true,
 		saveUninitialized: true,
-		name: "SESSION.COOKIE.COTOTASK",
-		cookie: {
-			maxAge: 1000 * 60 * 60 * 24 * 7 * 2,
-		},
+		name: "SESSION.COOKIE.COTOTASK"
 	}),
 )
 
