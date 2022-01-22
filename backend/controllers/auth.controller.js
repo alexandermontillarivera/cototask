@@ -7,8 +7,20 @@ const bcrypt = require("bcrypt")
 const session = require("express-session")
 
 const home = (req, res) => {
-
-		res.render("all/index.html")
+	if(req.session.loggedin) {
+	res.render("all/error.html", {
+		error: true,
+		alertTitle: "success",
+		alertMessage: "Redireccionando a la página principal",
+		alertIcon: "success",
+		showConfirmButton: true,
+		timer: 4000,
+		ruta: '/admin'
+		})
+	} else {
+		res.render("all/index.html", {
+		})
+	}
 }
 
 const newUser = async (req, res) => {

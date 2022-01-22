@@ -9,6 +9,7 @@ const bcrypt = require("bcrypt")
 const keygenerator = require("keygenerator")
 
 const indexGet = async (req, res) => {
+	if (req.session.loggedin) {
 		const userNow = req.session.key
 		Tasks.find({ status: "pending", user: userNow }, (err, pending) => {
 			if (err) console.log(err)
@@ -36,9 +37,21 @@ const indexGet = async (req, res) => {
 				})
 			})
 		})
+	} else {
+		res.render("all/error.html", {
+			error: true,
+			alertTitle: "Error",
+			alertMessage: "No estás logueado",
+			alertIcon: "error",
+			showConfirmButton: true,
+			timer: 4000,
+			ruta: '/'
+		})
+	}
 }
 
 const profileGet = async (req, res) => {
+	if (req.session.loggedin) {
 		const userNow = req.session.key
 		let pending = await Tasks.countDocuments({
 			status: "pending",
@@ -75,9 +88,21 @@ const profileGet = async (req, res) => {
 				ending: ending,
 			},
 		})
+	} else {
+		res.render('all/error.html', {
+			error: true,
+			alertTitle: "Error",
+			alertMessage: "No estas logueado",
+			alertIcon: "error",
+			showConfirmButton: true,
+			timer: 4000,
+			ruta: '/'
+		})
+	}
 }
 
 const developerGet = async (req, res) => {
+	if (req.session.loggedin) {
 		let userNow = req.session.email
 		Users.findOne({ email: userNow }, (err, data) => {
 			res.render("dashboard/developer.html", {
@@ -93,6 +118,17 @@ const developerGet = async (req, res) => {
 				},
 			})
 		})
+	} else {
+		res.render('all/error.html', {
+			error: true,
+			alertTitle: "Error",
+			alertMessage: "No estás logueado",
+			alertIcon: "error",
+			showConfirmButton: true,
+			timer: 4000,
+			ruta: '/'
+		})
+	}
 }
 
 const addTasksGet = (req, res) => {
