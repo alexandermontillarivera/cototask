@@ -2,10 +2,11 @@
 const express = require("express")
 const server = express()
 const ejs = require("ejs")
-const morgan = require("morgan")
 const path = require("path")
 const dotenv = require("dotenv").config()
 const session = require("express-session")
+const colors = require("colors")
+const morgan = require("morgan")
 
 // ======  requirement config ====== //
 const database = require("./backend/config/database")
@@ -49,5 +50,11 @@ server.use((req, res, next) => {
 server.use(auth.router)
 server.use(indexer.router)
 server.use(api.router)
+
+server.use(morgan("dev"))
+
+server.listen(server.set('port'), () => {
+    console.log((`[APP]: Server listening on http://localhost:${server.get('port')}`).yellow)
+})
 
 module.exports = server
