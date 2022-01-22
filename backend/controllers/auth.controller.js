@@ -7,11 +7,8 @@ const bcrypt = require("bcrypt")
 const session = require("express-session")
 
 const home = (req, res) => {
-	if(req.session.loggedin){
-		res.redirect("/admin")
-	}else{
+
 		res.render("all/index.html")
-	}
 }
 
 const newUser = async (req, res) => {
