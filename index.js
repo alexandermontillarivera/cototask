@@ -33,9 +33,18 @@ server.use(
 		secret: process.env.APP_SECRET_COOKIE_NAME,
 		resave: true,
 		saveUninitialized: true,
-		name: "SESSION.COOKIE.COTOTASK"
+		name: "SESSION.COOKIE.COTOTASK",
+		cookie: {
+			maxAge: 1000 * 60 * 60 * 24 * 7 * 2,
+		},
 	}),
 )
+
+server.use((req, res, next) => {
+	if (!req.user)
+		res.header("Cache-Control", "private, no-cache, no-store, must-revalidate")
+	next()
+})
 
 // ======  routes server ====== //
 server.use(auth.router)
