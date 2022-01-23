@@ -7,7 +7,7 @@
   <link rel="icon" href="/dashboard/img/brand/favicon.png" type="image/png">
   <script src="/front/js/64d58efce2.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/front/css/main.css" />
-  <title>Iniciar sesión y registro</title>
+  <title><%= lang.title %></title>
 </head>
 
 <body>
@@ -15,14 +15,14 @@
     <div class="forms-container">
       <div class="signin-signup">
         <form action="/auth/login" method="POST" class="sign-in-form">
-          <h2 class="title">Iniciar sesión</h2>
+          <h2 class="title"><%= lang.login %></h2>
           <div class="input-field">
             <i class="fas fa-user"></i>
-            <input required name="email" type="text" placeholder="Correo electrónico" />
+            <input required name="email" type="text" placeholder="<%= lang.email %>" />
           </div>
           <div class="input-field">
             <i class="fas fa-lock"></i>
-            <input required class="password-input-login" name="password" type="password" placeholder="Contraseña" />
+            <input required class="password-input-login" name="password" type="password" placeholder="<%= lang.password %>" />
           </div>
           <div class="input-field-pass">
             <a class="outStatusLogin" onclick="showPassword('password-input-login','outStatusLogin')" href="#"><i
@@ -31,7 +31,7 @@
           <input type="submit" value="Iniciar sesión" class="btn solid" />
         </form>
         <form action="/auth/register" method="POST" class="sign-up-form">
-          <h2 class="title">Registro</h2>
+          <h2 class="title"><%= lang.register %> </h2>
           <div class="input-field">
             <i class="fas fa-user"></i>
             <input required name="name" type="text" placeholder="Nombre" />
@@ -42,12 +42,12 @@
           </div>
           <div class="input-field">
             <i class="fas fa-envelope"></i>
-            <input required name="email" type="email" placeholder="Correo electrónico" />
+            <input required name="email" type="email" placeholder="<%= lang.email %> " />
           </div>
           <div class="input-field">
             <i class="fas fa-venus-mars"></i>
             <select required name="gender" id="">
-              <option class="default-selected" value="" disabled selected hidden>Género</option>
+              <option class="default-selected" value="" disabled selected hidden><%= lang.gender.title %> </option>
               <option value="men">Masculino</option>
               <option value="woman">Femenino</option>
             </select>

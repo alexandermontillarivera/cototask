@@ -5,8 +5,11 @@ const mongoose = require("mongoose")
 const keygenerator = require("keygenerator")
 const bcrypt = require("bcrypt")
 const session = require("express-session")
+const readJSON = require("read-json-file")
+const path = require("path")
+const appRoot = require("app-root-path")
 
-const home = (req, res) => {
+const home = async (req, res) => {
 	if(req.session.loggedin) {
 	res.render("all/error.html", {
 		error: true,
@@ -18,8 +21,15 @@ const home = (req, res) => {
 		ruta: '/admin'
 		})
 	} else {
-		res.render("all/index.html", {
+		readJSON(path.join(appRoot + "/src/backend/lang/language.json"), function (error, lang) {
+			if (error) {
+				throw error
+			}
+			res.render("all/index.html", {
+				lang: lang.es.initial,
+			})
 		})
+
 	}
 }
 

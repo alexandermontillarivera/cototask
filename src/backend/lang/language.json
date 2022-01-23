@@ -1,0 +1,16 @@
+{
+	"es": {
+		"initial": {
+			"title": "Iniciar sesión y registrarse",
+			"login": "Iniciar sesión",
+			"register": "Registrarse",
+			"email": "Correo electrónico",
+			"password": "Contraseña",
+            "gender": {
+                "title": "Género",
+                "men": "Masculino",
+                "women": "Femenino"
+            }
+		}
+	}
+}
