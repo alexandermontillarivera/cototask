@@ -4,9 +4,9 @@
   "description": "",
   "main": "src/server.js",
   "scripts": {
-    "start": "netlify-lambda src/server.js",
+    "start": "nodemon src/server.js",
     "production": "node src/server.js",
-    "netlify": "netlify-lambda src/server.js"
+    "netlify": "netlify-lambda install && netlify-lambda src/server.js"
   },
   "keywords": [],
   "author": "",
