@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
     <meta name="author" content="Creative Tim">
-    <title>Editar</title>
+    <title><%= page.metaTitle %> </title>
     <!-- Favicon -->
     <link rel="icon" href="/dashboard/img/brand/favicon.png" type="image/png">
     <!-- Fonts -->
@@ -23,10 +23,13 @@
 
 <body>
         <div class="main-content" id="panel">
-            <%- include('topbar.html') -%> 
-            <%- include('statusbar.html') -%>
+            <%- include('components/topbar.html') -%> 
+            <%- include('components/statusbar.html') -%>
                 <!-- Page content -->
     <div class="container-fluid mt--6">
+
+
+
     <div class="row">
         <div class="col-xl-8 center-item pb-6 pt-8">
             <form action="/admin/task/update/<%= task.map(task => `${task._id}`)%>"" class="bg-primary p-4 rounded" method="POST">
