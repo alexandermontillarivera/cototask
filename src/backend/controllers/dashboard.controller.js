@@ -149,6 +149,7 @@ const addTasksPost = async (req, res) => {
 }
 
 const updateTasksGet = async (req, res) => {
+	if(req.session.loggedin) {
 	const { task_id } = req.params
 
 	Tasks.find({ _id: task_id }, (err, data) => {
@@ -157,9 +158,27 @@ const updateTasksGet = async (req, res) => {
 		} else {
 			res.render("dashboard/tasks_update.html", {
 				task: data,
+				page: {
+					metaTitle: "Actualizar tarea - Dashboard Update",
+				},
+				user: {
+					name: req.session.name,
+					lastname: req.session.lastname,
+					avatar: req.session.avatar,
+				},
 			})
 		}
-	})
+	})} else {
+		res.render('all/error.html', {
+			error: true,
+			alertTitle: "Error",
+			alertMessage: "No estás logueado",
+			alertIcon: "error",
+			showConfirmButton: true,
+			timer: 4000,
+			ruta: '/'
+		})
+	}
 }
 
 const updateTasksPost = async (req, res) => {
