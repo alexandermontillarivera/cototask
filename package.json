@@ -5,8 +5,7 @@
   "main": "src/server.js",
   "scripts": {
     "start": "nodemon src/server.js",
-    "production": "node src/server.js",
-    "netlify": "netlify-lambda install && netlify-lambda src/server.js"
+    "production": "node src/server.js"
   },
   "keywords": [],
   "author": "",
@@ -20,9 +19,7 @@
     "express-session": "1.17.2",
     "keygenerator": "1.0.4",
     "mongoose": "6.1.7",
-    "netlify-lambda": "^2.0.15",
-    "read-json-file": "^1.0.1",
-    "serverless-http": "^2.7.0"
+    "read-json-file": "^1.0.1"
   },
   "devDependencies": {
     "colors": "1.4.0",
