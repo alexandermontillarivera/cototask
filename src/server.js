@@ -15,7 +15,7 @@ const indexer = require("./backend/routes/dashboard")
 const api = require("./backend/routes/api")
 
 // Setting up the view engine
-server.set("port", process.env.APP_PORT || 3000)
+server.set("port", process.env.APP_PORT || process.env.PORT)
 server.set("views", path.join(__dirname, "/frontend/views"))
 server.set("view engine", "ejs")
 server.engine("html", require("ejs").renderFile)
